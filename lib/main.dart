@@ -64,7 +64,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         color: Colors.lightGreen,
         isAllDay: false,
         isDone: true,
-        icon: 'assets/event1.jpg',
+        //icon: 'assets/event1.jpg',
         wide: false),
     NeatCleanCalendarEvent('Allday Event B',
         description: 'test desc',
@@ -74,7 +74,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             DateTime.now().day + 2, 17, 0),
         color: Colors.pink,
         isAllDay: true,
-        icon: 'assets/event1.jpg',
+        //icon: 'assets/event1.jpg',
         wide: false),
     NeatCleanCalendarEvent(
       'Normal Event D',
@@ -85,7 +85,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 17, 0),
       color: Colors.indigo,
       wide: true,
-      icon: 'assets/events.jpg',
+      //icon: 'assets/event1.jpg',
     ),
     NeatCleanCalendarEvent(
       'Normal Event E',
@@ -96,7 +96,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
       color: Colors.indigo,
       wide: true,
-      icon: 'assets/profile.jpg',
+      //icon: 'assets/event1.jpg',
     ),
   ];
 
