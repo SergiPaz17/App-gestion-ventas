@@ -32,6 +32,74 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   bool showEvents = true;
 
+  final List<NeatCleanCalendarEvent> _todaysEvents = [
+    NeatCleanCalendarEvent(
+      'Event A',
+      startTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
+      endTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
+      description: 'A special event',
+      color: Colors.blue[700],
+    ),
+  ];
+
+  final List<NeatCleanCalendarEvent> _eventList = [
+    NeatCleanCalendarEvent(
+      'MultiDay Event A',
+      description: 'test desc',
+      startTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
+      endTime: DateTime(DateTime.now().year, DateTime.now().month,
+          DateTime.now().day + 2, 12, 0),
+      color: Colors.orange,
+      isMultiDay: true,
+    ),
+    NeatCleanCalendarEvent('Event X',
+        description: 'test desc',
+        startTime: DateTime(DateTime.now().year, DateTime.now().month,
+            DateTime.now().day, 10, 30),
+        endTime: DateTime(DateTime.now().year, DateTime.now().month,
+            DateTime.now().day, 11, 30),
+        color: Colors.lightGreen,
+        isAllDay: false,
+        isDone: true,
+        icon: 'assets/event1.jpg',
+        wide: false),
+    NeatCleanCalendarEvent('Allday Event B',
+        description: 'test desc',
+        startTime: DateTime(DateTime.now().year, DateTime.now().month,
+            DateTime.now().day - 2, 14, 30),
+        endTime: DateTime(DateTime.now().year, DateTime.now().month,
+            DateTime.now().day + 2, 17, 0),
+        color: Colors.pink,
+        isAllDay: true,
+        icon: 'assets/event1.jpg',
+        wide: false),
+    NeatCleanCalendarEvent(
+      'Normal Event D',
+      description: 'test desc',
+      startTime: DateTime(DateTime.now().year, DateTime.now().month,
+          DateTime.now().day, 14, 30),
+      endTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 17, 0),
+      color: Colors.indigo,
+      wide: true,
+      icon: 'assets/events.jpg',
+    ),
+    NeatCleanCalendarEvent(
+      'Normal Event E',
+      description: 'test desc',
+      startTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 7, 45),
+      endTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
+      color: Colors.indigo,
+      wide: true,
+      icon: 'assets/profile.jpg',
+    ),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -52,6 +120,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 child: Container(
                   child: Calendar(
                     startOnMonday: true,
+                    eventsList: _eventList,
                     weekDays: const [
                       'Lunes',
                       'Martes',
@@ -70,6 +139,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     locale: 'es_ES',
                     isExpanded: true,
                     expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                    onEventSelected: (value) {
+                      print('Event selected ${value.summary}');
+                    },
+                    onEventLongPressed: (value) {
+                      print('Event long pressed ${value.summary}');
+                    },
+                    onMonthChanged: (value) {
+                      print('Month changed $value');
+                    },
+                    onDateSelected: (value) {
+                      print('Date selected $value');
+                    },
+                    onRangeSelected: (value) {
+                      print('Range selected ${value.from} - ${value.to}');
+                    },
                     datePickerType: DatePickerType.date,
                     dayOfWeekStyle: const TextStyle(
                         color: Colors.black,
@@ -83,8 +167,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
           ),
         ),
         //Funcionamiento del boton de abajo a la derecha de la app, Inputs del ususario Nombre de producto, precio y descripcion
+
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            showEvents = !showEvents;
             showDialog(
               context: context,
               builder: (BuildContext context) {
