@@ -170,7 +170,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     print(userInputName.text);
     print(userInputPrice.text);
     print(userInputDescription.text);
-    showEvents = true;
 
     userInputName.clear();
     userInputPrice.clear();
