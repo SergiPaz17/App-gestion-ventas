@@ -32,22 +32,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   bool showEvents = true;
 
-  final List<NeatCleanCalendarEvent> _todaysEvents = [
+  late final List<NeatCleanCalendarEvent> _todaysEvents = [
     NeatCleanCalendarEvent(
-      'Event A',
+      userInputName.text,
       startTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
       endTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
-      description: 'A special event',
+      description: userInputDescription.text,
       color: Colors.blue[700],
     ),
   ];
 
-  final List<NeatCleanCalendarEvent> _eventList = [
+  /* late final List<NeatCleanCalendarEvent> _eventList = [
     NeatCleanCalendarEvent(
-      'MultiDay Event A',
-      description: 'test desc',
+      userInputName.text,
+      description: userInputDescription.text,
       startTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
       endTime: DateTime(DateTime.now().year, DateTime.now().month,
@@ -55,51 +55,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
       color: Colors.orange,
       isMultiDay: true,
     ),
-    NeatCleanCalendarEvent('Event X',
-        description: 'test desc',
-        startTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day, 10, 30),
-        endTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day, 11, 30),
-        color: Colors.lightGreen,
-        isAllDay: false,
-        isDone: true,
-        //icon: 'assets/event1.jpg',
-        wide: false),
-    NeatCleanCalendarEvent('Allday Event B',
-        description: 'test desc',
-        startTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day - 2, 14, 30),
-        endTime: DateTime(DateTime.now().year, DateTime.now().month,
-            DateTime.now().day + 2, 17, 0),
-        color: Colors.pink,
-        isAllDay: true,
-        //icon: 'assets/event1.jpg',
-        wide: false),
-    NeatCleanCalendarEvent(
-      'Normal Event D',
-      description: 'test desc',
-      startTime: DateTime(DateTime.now().year, DateTime.now().month,
-          DateTime.now().day, 14, 30),
-      endTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 17, 0),
-      color: Colors.indigo,
-      wide: true,
-      //icon: 'assets/event1.jpg',
-    ),
-    NeatCleanCalendarEvent(
-      'Normal Event E',
-      description: 'test desc',
-      startTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 7, 45),
-      endTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
-      color: Colors.indigo,
-      wide: true,
-      //icon: 'assets/event1.jpg',
-    ),
   ];
-
+*/
   @override
   void initState() {
     super.initState();
@@ -120,7 +77,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 child: Container(
                   child: Calendar(
                     startOnMonday: true,
-                    eventsList: _eventList,
+                    eventsList: _todaysEvents,
                     weekDays: const [
                       'Lunes',
                       'Martes',
@@ -253,13 +210,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _createItem() {
     // Crear producto y coger los datos del mismo para agregarlo a la lista
-    print(userInputName.text);
-    print(userInputPrice.text);
-    print(userInputDescription.text);
 
-    userInputName.clear();
+    /* userInputName.clear();
     userInputPrice.clear();
-    userInputDescription.clear();
+    userInputDescription.clear();*/
   }
 
   void _onItemTapped(int index) {
