@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,35 +28,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
   final userInputPrice = TextEditingController();
   final userInputDescription = TextEditingController();
 
+
+  String nombre = "";
+  String descripcion = "";
+
   int _selectedIndex = 0;
 
   bool showEvents = true;
 
-  late final List<NeatCleanCalendarEvent> _todaysEvents = [
-    NeatCleanCalendarEvent(
-      userInputName.text,
-      startTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
-      endTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
-      description: userInputDescription.text,
-      color: Colors.blue[700],
-    ),
-  ];
 
-  /* late final List<NeatCleanCalendarEvent> _eventList = [
-    NeatCleanCalendarEvent(
-      userInputName.text,
-      description: userInputDescription.text,
-      startTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
-      endTime: DateTime(DateTime.now().year, DateTime.now().month,
-          DateTime.now().day + 2, 12, 0),
-      color: Colors.orange,
-      isMultiDay: true,
-    ),
+ late final List<NeatCleanCalendarEvent> _eventList = [
+
   ];
-*/
+  
+
   @override
   void initState() {
     super.initState();
@@ -77,7 +62,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 child: Container(
                   child: Calendar(
                     startOnMonday: true,
-                    eventsList: _todaysEvents,
+                    eventsList: _eventList,
                     weekDays: const [
                       'Lunes',
                       'Martes',
@@ -119,7 +104,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     showEvents: showEvents,
                   ),
                 ),
-              ),
+              ),Text("Testing List view")
             ],
           ),
         ),
@@ -128,6 +113,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showEvents = !showEvents;
+              print(_eventList.length);
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -210,6 +196,23 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _createItem() {
     // Crear producto y coger los datos del mismo para agregarlo a la lista
+
+    nombre = userInputName.text;
+    descripcion = userInputDescription.text;
+
+
+    _eventList.add(
+      NeatCleanCalendarEvent(
+      nombre,
+      description: descripcion,
+      startTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
+      endTime: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
+      color: Colors.blue[700],
+    ),);
+
+    print(_eventList.length);
 
     /* userInputName.clear();
     userInputPrice.clear();
