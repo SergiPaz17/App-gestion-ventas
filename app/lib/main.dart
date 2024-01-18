@@ -103,7 +103,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     showEvents: showEvents,
                   ),
                 ),
-              ),Text("Testing List view")
+              ),Text("Testing de la aplicacion no se que")
             ],
           ),
         ),
