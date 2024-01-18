@@ -31,15 +31,14 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   String nombre = "";
   String descripcion = "";
+  String precio = "";
 
   int _selectedIndex = 0;
 
   bool showEvents = true;
 
 
- late final List<NeatCleanCalendarEvent> _eventList = [
-
-  ];
+  final List<NeatCleanCalendarEvent> _eventList = [];
   
 
   @override
@@ -112,7 +111,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            showEvents = !showEvents;
               print(_eventList.length);
             showDialog(
               context: context,
@@ -167,7 +165,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             );
           },
           backgroundColor: Colors.green,
-          child: Icon(showEvents ? Icons.add : Icons.add),
+          child: const Icon(Icons.add),
         ),
         //Botones de navegacion de la parte de abajo de la app, Home, Total and Ajustes
         bottomNavigationBar: BottomNavigationBar(
@@ -199,20 +197,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
     nombre = userInputName.text;
     descripcion = userInputDescription.text;
+    precio = userInputPrice.text;
+
 
 
     _eventList.add(
       NeatCleanCalendarEvent(
       nombre,
-      description: descripcion,
+      description: descripcion + "          " + precio,
       startTime: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day, 10, 0),
+          DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute),
       endTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
       color: Colors.blue[700],
     ),);
 
-    print(_eventList.length);
+    //print(_eventList[2].description);
 
     /* userInputName.clear();
     userInputPrice.clear();
