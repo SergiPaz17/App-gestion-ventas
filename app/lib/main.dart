@@ -74,7 +74,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     isExpandable: true,
                     eventDoneColor: Colors.green,
                     selectedColor: const Color.fromRGBO(231, 29, 97, 1),
-                    selectedTodayColor: Colors.green,
+                    selectedTodayColor: Colors.pink,
                     todayColor: const Color.fromARGB(255, 255, 0, 0),
                     eventColor: null,
                     locale: 'es_ES',
