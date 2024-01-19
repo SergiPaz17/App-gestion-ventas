@@ -112,7 +112,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-              print(_eventList.length);
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -165,7 +164,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               },
             );
           },
-          backgroundColor: Colors.green,
+          backgroundColor: const Color.fromARGB(255, 240, 76, 131),
           child: const Icon(Icons.add),
         ),
         //Botones de navegacion de la parte de abajo de la app, Home, Total and Ajustes
@@ -205,19 +204,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
     _eventList.add(
       NeatCleanCalendarEvent(
       nombre,
-      description: descripcion + "          " + precio,
+      description: "$descripcion          $precio",
+      location: "nnose",
       startTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute),
       endTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
-      color: Colors.blue[700],
+      color: Colors.pink,
     ),);
 
     //print(_eventList[2].description);
 
-    /* userInputName.clear();
+    userInputName.clear();
     userInputPrice.clear();
-    userInputDescription.clear();*/
+    userInputDescription.clear();
   }
 
   void _onItemTapped(int index) {
