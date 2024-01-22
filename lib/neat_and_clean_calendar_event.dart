@@ -20,6 +20,7 @@ class NeatCleanCalendarEvent {
   Map<String, dynamic>? metadata;
   String? icon;
   bool? wide = false;
+  String price;
 
   NeatCleanCalendarEvent(
     this.summary, {
@@ -27,6 +28,7 @@ class NeatCleanCalendarEvent {
     this.location = '',
     required this.startTime,
     required this.endTime,
+    this.price = '',
     this.color = Colors.blue,
     this.isAllDay = false,
     this.isMultiDay = false,

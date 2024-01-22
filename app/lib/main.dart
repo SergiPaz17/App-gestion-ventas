@@ -204,12 +204,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
     _eventList.add(
       NeatCleanCalendarEvent(
       nombre,
-      description: "$descripcion          $precio",
+      description: "$descripcion",
       location: "nnose",
       startTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute),
       endTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
+      price: precio,
       color: Colors.pink,
     ),);
 
