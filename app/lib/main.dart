@@ -213,12 +213,14 @@ class _CalendarScreenState extends State<CalendarScreen> {
       price: precio,
       color: Colors.pink,
     ),);
-
     //print(_eventList[2].description);
 
     userInputName.clear();
     userInputPrice.clear();
     userInputDescription.clear();
+
+    setState(() {});
+
   }
 
   void _onItemTapped(int index) {
