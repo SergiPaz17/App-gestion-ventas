@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "191180345910",
+    "firebase_url": "https://stack-9f7f6-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "stack-9f7f6",
+    "storage_bucket": "stack-9f7f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191180345910:android:5afed70cd9975560cffe97",
+        "android_client_info": {
+          "package_name": "com.example.app_gestion_espai_salut"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr9HCfWzCw1f69iCDo3wlBLZoNb-ftspY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

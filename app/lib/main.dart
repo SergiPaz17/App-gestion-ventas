@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -36,6 +39,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   int _selectedIndex = 0;
 
   bool showEvents = true;
+
 
 
   final List<NeatCleanCalendarEvent> _eventList = [];
@@ -86,7 +90,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     onEventLongPressed: (value) {
                       _eventList.remove(value);
                       setState(() {});
-
                     },
                     onMonthChanged: (value) {
                       print('Month changed $value');
@@ -183,8 +186,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
               label: 'Total',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Ajustes',
+              icon: Icon(Icons.person),
+              label: 'Perfil',
             ),
           ],
         ));
@@ -207,7 +210,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
       NeatCleanCalendarEvent(
       nombre,
       description: descripcion,
-      location: "nnose",
       startTime: DateTime(
           DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute),
       endTime: DateTime(

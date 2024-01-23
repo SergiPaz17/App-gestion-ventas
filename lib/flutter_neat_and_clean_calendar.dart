@@ -631,7 +631,7 @@ class _CalendarState extends State<Calendar> {
                       event.price + "€";
                   return Container(
                     height: widget.eventTileHeight ??
-                        MediaQuery.of(context).size.height * 0.08,
+                        MediaQuery.of(context).size.height * 0.10,
                     child: GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
