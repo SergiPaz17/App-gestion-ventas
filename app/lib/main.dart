@@ -41,7 +41,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
   bool showEvents = true;
 
 
-
   final List<NeatCleanCalendarEvent> _eventList = [];
   
 
@@ -160,7 +159,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       child: const Text("Aceptar"),
                       onPressed: () {
                         //Navigator.pop(context, context) le pasas el context del dialog para poder cerrarlo cuando se da click a aceptar
-                        Navigator.pop(context, context);
+                          Navigator.pop(context, context);
+                        
+
                         _createItem();
                       },
                     ),
