@@ -84,7 +84,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       print('Event selected ${value.summary}');
                     },
                     onEventLongPressed: (value) {
-                      print('Event long pressed ${value.summary}');
+                      _eventList.remove(value);
+                      setState(() {});
+
                     },
                     onMonthChanged: (value) {
                       print('Month changed $value');
