@@ -87,8 +87,44 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       print('Event selected ${value.summary}');
                     },
                     onEventLongPressed: (value) {
-                      _eventList.remove(value);
-                      setState(() {});
+                    showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  title: const Text("Eliminar venta"),
+                  content: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Form(
+                      child: Column(
+                        children: [
+                          Text("Seguro que quiere eliminar la venta?", style: TextStyle(fontWeight: FontWeight.bold))
+                        ],
+                      ),
+                    ),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      child: const Text("Aceptar"),
+                      onPressed: () {
+                        //Navigator.pop(context, context) le pasas el context del dialog para poder cerrarlo cuando se da click a aceptar
+                          Navigator.pop(context, context);
+                          _eventList.remove(value);
+                          setState(() {});
+                      },
+                    ),
+                    ElevatedButton(
+                      child: const Text("Cancelar"),
+                      onPressed: () {
+                        //Navigator.pop(context, context) le pasas el context del dialog para poder cerrarlo cuando se da click a aceptar
+                          Navigator.pop(context, context);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+
                     },
                     onMonthChanged: (value) {
                       print('Month changed $value');
