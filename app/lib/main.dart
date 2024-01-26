@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
+import 'package:stack/total.dart';
+import 'package:stack/userlogin.dart';
 
 
 import 'package:supabase/supabase.dart';
@@ -24,6 +26,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stack',
       home: CalendarScreen(),
+      routes: {
+    '/profile': (context) =>  userlogin(),
+    '/calendarScreen': (context) =>  CalendarScreen(),
+    '/total': (context) => total(),
+
+  },
     );
   }
 }
@@ -234,10 +242,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Perfil',
+              
             ),
           ],
         ));
   }
+
+  
 
   void _handleNewDate(date) {
     //print('Date selected: $date');
@@ -275,7 +286,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
-    });
+      _selectedIndex = index;});
+      switch(index){
+        case 2:                             
+        Navigator.of(context).pushNamedAndRemoveUntil('/profile', (Route route) => false);
+        case 1: 
+        Navigator.of(context).pushNamedAndRemoveUntil('/total', (Route route) => false);
+
+      }
   }
 }
