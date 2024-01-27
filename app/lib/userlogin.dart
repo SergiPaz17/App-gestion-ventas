@@ -160,6 +160,8 @@ class _userlogin extends State<userlogin> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _createUser();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Usuario creado')));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Por favor compruebe los campos')),
