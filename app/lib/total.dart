@@ -7,6 +7,8 @@ import 'package:supabase/supabase.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'userlogin.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -24,6 +26,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: total(),
+
+    routes: {
+    '/profile': (context) =>  userlogin(),
+    '/calendarScreen': (context) =>  CalendarScreen(),
+    '/total': (context) => total(),
+
+  },
 
       
     );

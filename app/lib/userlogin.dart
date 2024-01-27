@@ -7,6 +7,8 @@ import 'package:supabase/supabase.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'total.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -19,12 +21,20 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: userlogin(),
+      
+      routes: {
+    '/profile': (context) =>  userlogin(),
+    '/calendarScreen': (context) =>  CalendarScreen(),
+    '/total': (context) => total(),
 
+  },
       
     );
     
@@ -47,20 +57,101 @@ class _userlogin extends State<userlogin> {
  
   }
     int _selectedIndex = 2;
+  final _formKey = GlobalKey<FormState>();
 
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-        body: const Column(
-          children: [Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")],
-        
-        
-        ),
-        //Funcionamiento del boton de abajo a la derecha de la app, Inputs del ususario Nombre de producto, precio y descripcion
+        body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 250),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: TextFormField(
+                  //controller: emailController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Email"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor introduzca su email';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: TextFormField(
+                  //controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Contraseña"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor introduzca su contraseña';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(child:               
+                  Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16.0),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        // Navigate the user to the Home page
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Por favor compruebe los campos')),
+                        );
+                      }
+                    },
+                    child: const Text('Login'),
+                  ),
+                  
+                ),
+              ),),
+              Expanded(child:              
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 1, vertical: 0),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        // Navigate the user to the Home page
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Por favor compruebe los campos')),
+                        );
+                      }
+                    },
+                    child: const Text('Register'),
+                  ),
+                  
+                ),
+              ), )
+                ],
+              ),
 
-        //Botones de navegacion de la parte de abajo de la app, Home, Total and Ajustes
+
+            ],
+          ),
+        ),
+      ),        //Botones de navegacion de la parte de abajo de la app, Home, Total and Ajustes
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
@@ -80,7 +171,9 @@ class _userlogin extends State<userlogin> {
             ),
           ],
         ));
-        
+        //Funcionamiento del boton de abajo a la derecha de la app, Inputs del ususario Nombre de producto, precio y descripcion
+
+
         }
     void _onItemTapped(int index) {
     setState(() {
