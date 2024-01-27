@@ -81,6 +81,7 @@ class _userlogin extends State<userlogin> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+
               Padding(
                 padding:
                 const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -96,6 +97,7 @@ class _userlogin extends State<userlogin> {
                   },
                 ),
               ),
+
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -111,6 +113,7 @@ class _userlogin extends State<userlogin> {
                   },
                 ),
               ),
+
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -127,7 +130,6 @@ class _userlogin extends State<userlogin> {
                   },
                 ),
               ),
-              
               
               Row(
                 children: <Widget>[
@@ -148,9 +150,9 @@ class _userlogin extends State<userlogin> {
                     },
                     child: const Text('Login'),
                   ),
-                  
                 ),
               ),),
+
               Expanded(child:              
               Padding(
                 padding:
@@ -170,13 +172,10 @@ class _userlogin extends State<userlogin> {
                     },
                     child: const Text('Register'),
                   ),
-                  
                 ),
               ), )
                 ],
               ),
-
-
             ],
           ),
         ),
@@ -200,11 +199,7 @@ class _userlogin extends State<userlogin> {
             ),
           ],
         ));
-        //Funcionamiento del boton de abajo a la derecha de la app, Inputs del ususario Nombre de producto, precio y descripcion
-
-
         }
-
 
     void _onItemTapped(int index) {
     setState(() {
@@ -214,7 +209,6 @@ class _userlogin extends State<userlogin> {
         Navigator.of(context).pushNamedAndRemoveUntil('/calendarScreen', (Route route) => false);
         case 1: 
         Navigator.of(context).pushNamedAndRemoveUntil('/total', (Route route) => false);
-
       }
   }
 

@@ -160,7 +160,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     showEvents: showEvents,
                   ),
                 ),
-              ),Text("Testing de la aplicacion no se que"),
+              ),const Text("Testing de la aplicacion no se que"),
               
             ],
           ),
