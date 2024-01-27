@@ -18,6 +18,8 @@ Future<void> main() async {
   );
   runApp(const MyApp());
 }
+final supabase = Supabase.instance.client;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -50,6 +52,8 @@ class userlogin extends StatefulWidget {
 
 class _userlogin extends State<userlogin> {
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -75,7 +79,7 @@ class _userlogin extends State<userlogin> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextFormField(
-                  //controller: emailController,
+                  controller: emailController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), labelText: "Email"),
                   validator: (value) {
@@ -90,7 +94,7 @@ class _userlogin extends State<userlogin> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextFormField(
-                  //controller: passwordController,
+                  controller: passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), labelText: "Contraseña"),
@@ -132,7 +136,7 @@ class _userlogin extends State<userlogin> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // Navigate the user to the Home page
+                        _createUser();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Por favor compruebe los campos')),
@@ -175,6 +179,8 @@ class _userlogin extends State<userlogin> {
 
 
         }
+
+
     void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;});
@@ -185,6 +191,13 @@ class _userlogin extends State<userlogin> {
         Navigator.of(context).pushNamedAndRemoveUntil('/total', (Route route) => false);
 
       }
+  }
+
+  void _createUser() async {
+
+    await supabase
+    .from('users')
+    .insert({'name': 'Hola', 'password': passwordController.toString(), 'email': emailController.toString()});
   }
 }
 
