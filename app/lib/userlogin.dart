@@ -54,6 +54,11 @@ class _userlogin extends State<userlogin> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final userController= TextEditingController();
+
+  String email = "";
+  String password = "";
+  String usuario = "";
 
   @override
   void initState() {
@@ -70,11 +75,27 @@ class _userlogin extends State<userlogin> {
     return Scaffold(
         body: Form(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 250),
+        child: 
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 200),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Padding(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: TextFormField(
+                  controller: userController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Usuario"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor introduzca su usuario';
+                    }
+                    return null;
+                  },
+                ),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -106,6 +127,8 @@ class _userlogin extends State<userlogin> {
                   },
                 ),
               ),
+              
+              
               Row(
                 children: <Widget>[
                   Expanded(child:               
@@ -195,9 +218,15 @@ class _userlogin extends State<userlogin> {
 
   void _createUser() async {
 
+    email = emailController.text;
+    password = passwordController.text;
+    usuario = userController.text;
+
     await supabase
     .from('users')
-    .insert({'name': 'Hola', 'password': passwordController.toString(), 'email': emailController.toString()});
+    .insert({'name': usuario, 'password': password, 'email': email});
+
+
   }
 }
 
