@@ -60,6 +60,8 @@ class _userlogin extends State<userlogin> {
   String password = "";
   String usuario = "";
 
+  bool islogin = false;
+
   @override
   void initState() {
     super.initState();
@@ -77,11 +79,47 @@ class _userlogin extends State<userlogin> {
         key: _formKey,
         child: 
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 60),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Row(
+                children: <Widget>[
+                  Expanded(child:               
+                  Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 50.0),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if(!islogin){
+                      changeIsLogin();
+                      }
+                    },
+                    child: const Text('Login'),
+                  ),
+                ),
+              ),),
 
+              Expanded(child:              
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 1, vertical: 0),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if(islogin){
+                        changeIsLogin();
+                      }
+                      
+                    },
+                    child: const Text('Register'),
+                  ),
+                ),
+              ), )
+                ],
+              ),
+                    
               Padding(
                 padding:
                 const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -131,34 +169,8 @@ class _userlogin extends State<userlogin> {
                 ),
               ),
               
-              Row(
-                children: <Widget>[
-                  Expanded(child:               
-                  Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16.0),
-                child: Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Navigate the user to the Home page
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Por favor compruebe los campos')),
-                        );
-                      }
-                    },
-                    child: const Text('Login'),
-                  ),
-                ),
-              ),),
-
-              Expanded(child:              
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 1, vertical: 0),
-                child: Center(
-                  child: ElevatedButton(
+              
+              ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _createUser();
@@ -170,17 +182,12 @@ class _userlogin extends State<userlogin> {
                         );
                       }
                     },
-                    child: const Text('Register'),
-                  ),
-                ),
-              ), )
-                ],
-              ),
-            ],
+                    child: islogin ?  const Text('Login') : const Text('Register'),
+          )],
           ),
         ),
       ),        //Botones de navegacion de la parte de abajo de la app, Home, Total and Ajustes
-        bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar: BottomNavigationBar( 
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
@@ -224,5 +231,11 @@ class _userlogin extends State<userlogin> {
 
 
   }
+
+     void changeIsLogin(){
+      setState(() {
+       islogin = !islogin;
+       });
+    }
 }
 
