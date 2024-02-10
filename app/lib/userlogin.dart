@@ -175,6 +175,11 @@ class _userlogin extends State<userlogin> {
               
               ElevatedButton(
                     onPressed: () {
+                      if(islogin){
+                        _checkUserLogin();
+
+                      }else{
+                    
                       if (_formKey.currentState!.validate()) {
                         _createUser();
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -184,7 +189,9 @@ class _userlogin extends State<userlogin> {
                           const SnackBar(content: Text('Por favor compruebe los campos')),
                         );
                       }
+                      }
                     },
+
                     child: islogin ?  const Text('Login') : const Text('Register'),
           )],
           ),
@@ -232,6 +239,15 @@ class _userlogin extends State<userlogin> {
     .from('users')
     .insert({'name': usuario, 'password': password, 'email': email});
 
+
+  }
+
+  void _checkUserLogin() async {
+
+
+    //await supabase.from('users').select();
+
+    print(await supabase.from('users').select('* WHERE name = prueba'));
 
   }
 
