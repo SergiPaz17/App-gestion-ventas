@@ -60,7 +60,7 @@ class _userlogin extends State<userlogin> {
   String password = "";
   String usuario = "";
 
-  bool islogin = false;
+  bool islogin = true;
 
   @override
   void initState() {
@@ -84,6 +84,7 @@ class _userlogin extends State<userlogin> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
+                
                 children: <Widget>[
                   Expanded(child:               
                   Padding(
@@ -139,7 +140,7 @@ class _userlogin extends State<userlogin> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: TextFormField(
+                child: !islogin ? TextFormField(
                   controller: emailController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), labelText: "Email"),
@@ -149,13 +150,15 @@ class _userlogin extends State<userlogin> {
                     }
                     return null;
                   },
-                ),
+                ) : const Padding(padding: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+),
               ),
 
+              
               Padding(
-                padding:
+                padding: 
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: TextFormField(
+                child:  TextFormField(
                   controller: passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
