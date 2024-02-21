@@ -8,6 +8,8 @@ import 'package:supabase/supabase.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'package:get_storage/get_storage.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -56,6 +58,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
   int _selectedIndex = 0;
 
   bool showEvents = true;
+
+  bool isLogued = false;
 
 
   final List<NeatCleanCalendarEvent> _eventList = [];
@@ -288,8 +292,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
     setState(() {
       _selectedIndex = index;});
       switch(index){
-        case 2:                             
+        case 2:
+        if(!isLogued) { 
         Navigator.of(context).pushNamedAndRemoveUntil('/profile', (Route route) => false);
+        }
+        else { 
+          // Crear pantalla para el perfil del usuario 
+        }                            
         case 1: 
         Navigator.of(context).pushNamedAndRemoveUntil('/total', (Route route) => false);
 

@@ -40,6 +40,7 @@ dependencies:
   firebase_core: ^2.24.2
   supabase: ^2.0.6
   supabase_flutter: ^2.3.1
+  get_storage: ^2.1.1
 
 
 
