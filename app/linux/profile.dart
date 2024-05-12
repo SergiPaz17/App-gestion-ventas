@@ -86,7 +86,6 @@ class _userlogin extends State<userlogin> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
-                
                 children: <Widget>[
                   Expanded(child:               
                   Padding(
@@ -246,21 +245,11 @@ class _userlogin extends State<userlogin> {
 
   void _checkUserLogin() async {
 
-    usuario = userController.text;
-    password = passwordController.text;
 
-    bool result;
+    //await supabase.from('users').select();
 
-    result = (await supabase.from('users').select('name, email, password').eq('name',usuario)).isNotEmpty;
+    print(await supabase.from('users').select('* WHERE name = prueba'));
 
-
-    if(result){
-      print(result);
-      //Navigator.of(context).pushNamedAndRemoveUntil('/calendarScreen', (Route route) => false);
-    }
-    else{
-      print("No hay usuario puto");
-    }
   }
 
      void changeIsLogin(){

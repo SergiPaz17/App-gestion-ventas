@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
-import 'package:stack/profile.dart';
 import 'package:stack/total.dart';
 import 'package:stack/userlogin.dart';
 
@@ -30,10 +29,9 @@ class MyApp extends StatelessWidget {
       title: 'Stack',
       home: CalendarScreen(),
       routes: {
-    '/createprofile': (context) =>  userlogin(),
+    '/profile': (context) =>  userlogin(),
     '/calendarScreen': (context) =>  CalendarScreen(),
     '/total': (context) => total(),
-    '/profile': (context) => profile()
 
   },
     );
@@ -299,7 +297,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
         Navigator.of(context).pushNamedAndRemoveUntil('/profile', (Route route) => false);
         }
         else { 
-          Navigator.of(context).pushNamedAndRemoveUntil('/profile', (route) => false);
           // Crear pantalla para el perfil del usuario 
         }                            
         case 1: 
